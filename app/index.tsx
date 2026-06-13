@@ -1,7 +1,18 @@
-import { Redirect } from 'expo-router';
+import { useEffect } from 'react';
+import { useRouter } from 'expo-router';
 import { useAppStore } from '../src/store/appStore';
 
 export default function Root() {
+  const router = useRouter();
   const onboardingComplete = useAppStore((s) => s.onboardingComplete);
-  return <Redirect href={onboardingComplete ? '/tabs' : '/onboarding'} />;
+
+  useEffect(() => {
+    if (onboardingComplete) {
+      router.replace('/tabs');
+    } else {
+      router.replace('/onboarding');
+    }
+  }, []);
+
+  return null;
 }
