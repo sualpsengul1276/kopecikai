@@ -1,19 +1,17 @@
 import { create } from 'zustand';
-import type { Theme } from './theme'; import { blueTheme, mauveTheme } from './theme';
+import type { Theme } from './theme';
+import { blueTheme, mauveTheme } from './theme';
 
 export type Screen =
   | 'welcome'
   | 'onboarding-name'
   | 'onboarding-details'
-  | 'onboarding-routine'
-  | 'onboarding-goals'
   | 'onboarding-complete'
   | 'home'
-  | 'training'
-  | 'quests'
-  | 'social'
-  | 'leaderboard'
-  | 'rewards';
+  | 'learn'
+  | 'stats'
+  | 'profile'
+  | 'ask-ai';
 
 interface State {
   screen: Screen;
@@ -40,7 +38,7 @@ export const useStore = create<State>((set) => ({
   dogGender: 'male',
   dogBreed: '',
   xp: 0,
-  streak: 3,
+  streak: 7,
   completedTasks: [],
 
   goto: (screen) => set({ screen }),

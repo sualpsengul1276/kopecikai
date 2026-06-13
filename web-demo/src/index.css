@@ -9,3 +9,19 @@ body {
 #root { min-height: 100vh; display: flex; flex-direction: column; }
 button { cursor: pointer; border: none; font-family: inherit; }
 input, select { font-family: inherit; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #F5F7FA;
+}

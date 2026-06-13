@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useStore } from '../store';
 import { palette } from '../theme';
-import Btn from '../components/Btn';
 
-const BREEDS = ['Golden Retriever','Labrador','Alman Çoban','Fransız Bulldog','Beagle','Poodle','Husky','Diğer'];
+const BREEDS = ["Labrador", "Golden Retriever", "German Shepherd", "French Bulldog", "Beagle", "Poodle", "Husky", "Border Collie", "Chihuahua", "Other"];
 
 export default function OnboardingName() {
   const { goto, setDogName, setDogBreed, theme } = useStore();
@@ -11,47 +10,56 @@ export default function OnboardingName() {
   const [breed, setBreed] = useState('');
 
   return (
-    <div style={{ minHeight:'100vh', background:palette.offWhite, padding:'24px 24px 40px' }}>
-      {/* Progress */}
-      <div style={{ height:6, background:palette.gray100, borderRadius:3, overflow:'hidden', marginBottom:16 }}>
-        <div style={{ width:'20%', height:'100%', background:theme.primary, borderRadius:3, transition:'width 0.4s' }} />
+    <div style={{ minHeight:'100vh', background:'#fff', padding:'56px 24px 32px', display:'flex', flexDirection:'column' }}>
+      <div style={{ marginBottom:32 }}>
+        <div style={{ display:'flex', gap:6, marginBottom:24 }}>
+          {[1,2,3].map(i => (
+            <div key={i} style={{ flex:1, height:4, borderRadius:2, background: i===1 ? theme.primary : palette.gray100 }} />
+          ))}
+        </div>
+        <p style={{ color:palette.gray400, fontWeight:700, fontSize:14 }}>Step 1 of 3</p>
+        <h2 style={{ fontWeight:900, fontSize:28, color:palette.gray900, marginTop:4 }}>What's your dog's name?</h2>
       </div>
-      <p style={{ color:palette.gray400, fontSize:13, fontWeight:600, marginBottom:8 }}>1 / 4</p>
-      <h2 style={{ fontWeight:900, fontSize:26, marginBottom:6 }}>Köpeğin adı ne? 🐶</h2>
-      <p style={{ color:palette.gray600, fontSize:15, marginBottom:32 }}>Ona özel bir program hazırlayacağız.</p>
 
-      <label style={{ display:'block', fontSize:12, fontWeight:700, textTransform:'uppercase', letterSpacing:0.5, color:palette.gray600, marginBottom:8 }}>İsim</label>
       <input
-        autoFocus
         value={name}
         onChange={e => setName(e.target.value)}
-        placeholder="örn. Karamel"
+        placeholder="e.g. Buddy"
         style={{
-          width:'100%', height:52, borderRadius:14, border:`2px solid ${name ? theme.primary : palette.gray200}`,
-          padding:'0 16px', fontSize:16, fontWeight:600, color:palette.gray900,
-          background:'#fff', outline:'none', marginBottom:20,
+          border: `2px solid ${name ? theme.primary : palette.gray100}`,
+          borderRadius:14, padding:'16px 18px',
+          fontSize:18, fontWeight:700, fontFamily:'Nunito, sans-serif',
+          outline:'none', color:palette.gray900,
+          marginBottom:28, transition:'border-color 0.2s',
         }}
       />
 
-      <label style={{ display:'block', fontSize:12, fontWeight:700, textTransform:'uppercase', letterSpacing:0.5, color:palette.gray600, marginBottom:8 }}>Irk</label>
-      <select
-        value={breed}
-        onChange={e => setBreed(e.target.value)}
+      <p style={{ fontWeight:800, fontSize:16, color:palette.gray900, marginBottom:12 }}>Breed</p>
+      <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:'auto' }}>
+        {BREEDS.map(b => (
+          <button key={b} onClick={() => setBreed(b)} style={{
+            padding:'9px 16px', borderRadius:20,
+            border: `2px solid ${breed===b ? theme.primary : palette.gray100}`,
+            background: breed===b ? theme.primarySurface : '#fff',
+            color: breed===b ? theme.primary : palette.gray600,
+            fontWeight:700, fontSize:13, fontFamily:'Nunito, sans-serif', cursor:'pointer',
+          }}>{b}</button>
+        ))}
+      </div>
+
+      <button
+        onClick={() => { setDogName(name); setDogBreed(breed); goto('onboarding-details'); }}
+        disabled={!name}
         style={{
-          width:'100%', height:52, borderRadius:14, border:`2px solid ${breed ? theme.primary : palette.gray200}`,
-          padding:'0 16px', fontSize:16, fontWeight:600, color: breed ? palette.gray900 : palette.gray400,
-          background:'#fff', outline:'none', marginBottom:40, appearance:'none',
+          marginTop:32, background: name ? theme.primary : palette.gray100,
+          color: name ? '#fff' : palette.gray400,
+          border:'none', borderRadius:16, padding:'18px',
+          fontSize:17, fontWeight:900, fontFamily:'Nunito, sans-serif',
+          cursor: name ? 'pointer' : 'default', transition:'all 0.2s',
         }}
       >
-        <option value="">Irk seçin</option>
-        {BREEDS.map(b => <option key={b} value={b}>{b}</option>)}
-      </select>
-
-      <Btn
-        label="Devam Et →"
-        onClick={() => { setDogName(name); setDogBreed(breed); goto('onboarding-details'); }}
-        disabled={!name.trim()}
-      />
+        Continue →
+      </button>
     </div>
   );
 }

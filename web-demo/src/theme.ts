@@ -1,10 +1,10 @@
 export type Gender = 'male' | 'female';
 
 export const blueTheme = {
-  primary: '#2F6FD0',
-  primaryDark: '#1E4FA3',
-  primaryLight: '#D6E6FF',
-  primarySurface: '#F0F5FF',
+  primary: '#2D7DD2',
+  primaryDark: '#1A5FAA',
+  primaryLight: '#D0E8FF',
+  primarySurface: '#EDF5FF',
   gender: 'male' as Gender,
 };
 
@@ -20,7 +20,7 @@ export type Theme = typeof blueTheme;
 
 export const palette = {
   white: '#FFFFFF',
-  offWhite: '#F8F9FA',
+  offWhite: '#F5F7FA',
   gray50: '#F2F4F6',
   gray100: '#E5E8EC',
   gray200: '#C8CDD5',
@@ -31,6 +31,4 @@ export const palette = {
   warning: '#F59E0B',
   error: '#EF4444',
   xpGold: '#F59E0B',
-  blue: '#2F6FD0',
-  mauve: '#B5417A',
 };

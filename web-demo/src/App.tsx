@@ -5,14 +5,13 @@ import OnboardingName from './screens/OnboardingName';
 import OnboardingDetails from './screens/OnboardingDetails';
 import OnboardingComplete from './screens/OnboardingComplete';
 import HomeScreen from './screens/Home';
-import TrainingScreen from './screens/Training';
-import QuestsScreen from './screens/Quests';
-import SocialScreen from './screens/Social';
-import LeaderboardScreen from './screens/Leaderboard';
-import RewardsScreen from './screens/Rewards';
+import LearnScreen from './screens/Learn';
+import StatsScreen from './screens/Stats';
+import ProfileScreen from './screens/Profile';
+import AskAIScreen from './screens/AskAI';
 import TabBar from './components/TabBar';
 
-const TAB_SCREENS = ['home','training','quests','social','leaderboard','rewards'];
+const TAB_SCREENS = ['home','learn','ask-ai','stats','profile'];
 
 export default function App() {
   const { screen } = useStore();
@@ -24,18 +23,21 @@ export default function App() {
       case 'onboarding-name':     return <OnboardingName />;
       case 'onboarding-details':  return <OnboardingDetails />;
       case 'onboarding-complete': return <OnboardingComplete />;
-      case 'home':        return <HomeScreen />;
-      case 'training':    return <TrainingScreen />;
-      case 'quests':      return <QuestsScreen />;
-      case 'social':      return <SocialScreen />;
-      case 'leaderboard': return <LeaderboardScreen />;
-      case 'rewards':     return <RewardsScreen />;
-      default:            return <WelcomeScreen />;
+      case 'home':    return <HomeScreen />;
+      case 'learn':   return <LearnScreen />;
+      case 'ask-ai':  return <AskAIScreen />;
+      case 'stats':   return <StatsScreen />;
+      case 'profile': return <ProfileScreen />;
+      default:        return <WelcomeScreen />;
     }
   };
 
   return (
-    <div style={{ display:'flex', flexDirection:'column', minHeight:'100vh', background:palette.offWhite }}>
+    <div style={{
+      display:'flex', flexDirection:'column', minHeight:'100vh',
+      background:palette.offWhite, maxWidth:430, margin:'0 auto',
+      position:'relative', boxShadow:'0 0 60px rgba(0,0,0,0.12)',
+    }}>
       <div style={{ flex:1, overflowY:'auto', paddingBottom: isTab ? 72 : 0 }}>
         {renderScreen()}
       </div>
