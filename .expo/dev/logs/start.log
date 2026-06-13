@@ -1,0 +1,48 @@
+{"_e":"root:init","_t":1781326531586,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781326531587,"nodeEnv":"production","babelEnv":"production","mode":"production"}
+{"_e":"env:load","_t":1781326531589,"mode":"production","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781326532322,"mode":"production","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781326532919,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1781326536660,"atlas":false,"workers":3,"host":"0.0.0.0","port":8081}
+{"_e":"metro:server_log","_t":1781326536809,"level":"error","data":["An unknown error occurred while installing React Native DevTools. Details:\n\n[0613/045536.802927:FATAL:electron/shell/app/electron_main_delegate.cc:313] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.\n"]}
+{"_e":"root:init","_t":1781326542560,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781326542561,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781326542563,"mode":"development","files":[],"env":{}}
+{"_e":"root:init","_t":1781326548121,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781326548122,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781326548123,"mode":"development","files":[],"env":{}}
+{"_e":"root:init","_t":1781326554021,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781326554021,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781326554023,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781326554177,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781326554377,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1781326554524,"level":"error","data":["An unknown error occurred while installing React Native DevTools. Details:\n\n[0613/045554.511648:FATAL:electron/shell/app/electron_main_delegate.cc:313] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.\n"]}
+{"_e":"metro:instantiate","_t":1781326557371,"atlas":false,"workers":3,"host":"0.0.0.0","port":8081}
+{"_e":"root:init","_t":1781326709504,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781326709504,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781326709506,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781326709653,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781326709850,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1781326710015,"level":"error","data":["An unknown error occurred while installing React Native DevTools. Details:\n\n[0613/045829.996328:FATAL:electron/shell/app/electron_main_delegate.cc:313] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.\n"]}
+{"_e":"metro:instantiate","_t":1781326712940,"atlas":false,"workers":3,"host":"0.0.0.0","port":8081}
+{"_e":"root:init","_t":1781326739247,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781326739248,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781326739249,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781326739398,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781326739602,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1781326739754,"level":"error","data":["An unknown error occurred while installing React Native DevTools. Details:\n\n[0613/045859.742359:FATAL:electron/shell/app/electron_main_delegate.cc:313] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.\n"]}
+{"_e":"metro:instantiate","_t":1781326742712,"atlas":false,"workers":3,"host":"0.0.0.0","port":8081}
+{"_e":"root:init","_t":1781327791958,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781327791959,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781327791961,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781327792335,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781327792845,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1781327800104,"level":"error","data":["An unknown error occurred while installing React Native DevTools. Details:\n\n[0613/051640.093729:FATAL:electron/shell/app/electron_main_delegate.cc:313] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.\n"]}
+{"_e":"metro:instantiate","_t":1781327803358,"atlas":false,"workers":3,"host":"0.0.0.0","port":8081}
+{"_e":"root:init","_t":1781327848452,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781327848452,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781327848454,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781327848597,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781327848792,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1781327848950,"level":"error","data":["An unknown error occurred while installing React Native DevTools. Details:\n\n[0613/051728.930378:FATAL:electron/shell/app/electron_main_delegate.cc:313] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.\n"]}
+{"_e":"metro:instantiate","_t":1781327852069,"atlas":false,"workers":3,"host":"0.0.0.0","port":8081}
