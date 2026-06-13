@@ -1,10 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
 import { DogProfile, OwnerProfile } from '../store/appStore';
-
-const client = new Anthropic({
-  apiKey: process.env.EXPO_PUBLIC_ANTHROPIC_API_KEY ?? '',
-  dangerouslyAllowBrowser: true,
-});
 
 export interface ScheduleDay {
   day: string;
@@ -18,7 +12,7 @@ export interface ScheduleTask {
   id: string;
   title: string;
   description: string;
-  duration: number; // minutes
+  duration: number;
   xp: number;
   type: 'training' | 'walk' | 'play' | 'social' | 'rest';
   timeOfDay: 'morning' | 'afternoon' | 'evening';
@@ -31,6 +25,8 @@ export interface WeeklySchedule {
   tips: string[];
   generatedAt: string;
 }
+
+const API_KEY = process.env.EXPO_PUBLIC_ANTHROPIC_API_KEY ?? '';
 
 function buildPrompt(dog: Partial<DogProfile>, owner: Partial<OwnerProfile>): string {
   const ageLabel =
@@ -53,18 +49,18 @@ SAHİP BİLGİLERİ:
 - Deneyim: ${owner.experienceLevel === 'beginner' ? 'Yeni başlayan' : owner.experienceLevel === 'intermediate' ? 'Orta seviye' : 'Deneyimli'}
 - Hedefler: ${(owner.goals || []).join(', ') || 'Genel eğitim'}
 
-ÇIKTI FORMATI (JSON):
+ÇIKTI FORMATI (sadece JSON):
 {
   "days": [
     {
       "day": "Pazartesi",
       "date": "2026-06-13",
-      "theme": "Gün teması (örn: Temelleri Güçlendir)",
+      "theme": "Gün teması",
       "tasks": [
         {
           "id": "unique_id",
           "title": "Görev başlığı",
-          "description": "Nasıl yapılacağına dair 1-2 cümle açıklama",
+          "description": "1-2 cümle açıklama",
           "duration": 15,
           "xp": 30,
           "type": "training",
@@ -77,15 +73,14 @@ SAHİP BİLGİLERİ:
   ],
   "weeklyGoal": "Bu haftanın ana hedefi",
   "tips": ["İpucu 1", "İpucu 2", "İpucu 3"],
-  "generatedAt": "ISO timestamp"
+  "generatedAt": "2026-06-13T00:00:00Z"
 }
 
 Kurallar:
-- Her güne 3-5 görev ekle (günlük süre maks 60 dk)
-- Pazar günü hafif/dinlenme odaklı olsun
-- XP değerleri: kısa görev=15-25, orta=30-50, uzun=60-100
-- Türkçe yaz
-- Sadece JSON döndür, başka açıklama ekleme`;
+- Her güne 3-5 görev, günlük maks 60 dk
+- Pazar hafif/dinlenme
+- XP: kısa=15-25, orta=30-50, uzun=60-100
+- Türkçe, sadece JSON`;
 }
 
 export async function generateWeeklySchedule(
@@ -93,22 +88,35 @@ export async function generateWeeklySchedule(
   owner: Partial<OwnerProfile>,
   onChunk?: (text: string) => void
 ): Promise<WeeklySchedule> {
-  let fullText = '';
-
-  const stream = await client.messages.stream({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 4000,
-    messages: [{ role: 'user', content: buildPrompt(dog, owner) }],
-  });
-
-  for await (const chunk of stream) {
-    if (chunk.type === 'content_block_delta' && chunk.delta.type === 'text_delta') {
-      fullText += chunk.delta.text;
-      onChunk?.(fullText);
-    }
+  if (!API_KEY) {
+    throw new Error('EXPO_PUBLIC_ANTHROPIC_API_KEY eksik. .env dosyasına ekleyin.');
   }
 
-  // Extract JSON from response
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': API_KEY,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 4000,
+      stream: false,
+      messages: [{ role: 'user', content: buildPrompt(dog, owner) }],
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Anthropic API hatası: ${response.status} ${err}`);
+  }
+
+  const data = await response.json() as { content: Array<{ type: string; text: string }> };
+  const fullText = data.content.find((c) => c.type === 'text')?.text ?? '';
+
+  onChunk?.(fullText);
+
   const jsonMatch = fullText.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error('AI geçerli JSON döndürmedi');
 

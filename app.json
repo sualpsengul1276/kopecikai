@@ -28,6 +28,5 @@
       "expo-router",
       "expo-font"
     ],
-    "sdkVersion": "51.0.0"
   }
 }
