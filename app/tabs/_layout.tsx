@@ -5,15 +5,6 @@ import { palette } from '../../src/theme/colors';
 import { fonts } from '../../src/theme/typography';
 import { Platform } from 'react-native';
 
-function TabIcon({ emoji, focused }: { emoji: string; focused: boolean }) {
-  return (
-    <React.Fragment>
-      {/* expo-router renders label separately */}
-      {null}
-    </React.Fragment>
-  );
-}
-
 export default function TabsLayout() {
   const theme = useAppStore((s) => s.theme);
 
@@ -27,8 +18,8 @@ export default function TabsLayout() {
           backgroundColor: palette.white,
           borderTopColor: palette.gray100,
           borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 84 : 64,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 10,
+          height: Platform.OS === 'ios' ? 84 : 68,
+          paddingBottom: Platform.OS === 'ios' ? 28 : 12,
           paddingTop: 8,
           shadowColor: '#000',
           shadowOffset: { width: 0, height: -2 },
@@ -38,31 +29,20 @@ export default function TabsLayout() {
         },
         tabBarLabelStyle: {
           fontFamily: fonts.bold,
-          fontSize: 10,
+          fontSize: 9,
           marginTop: 2,
         },
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{ title: 'Ana Sayfa', tabBarIcon: ({ focused }) => null, tabBarLabel: '🏠 Ev' }}
-      />
-      <Tabs.Screen
-        name="training"
-        options={{ title: 'Antrenman', tabBarLabel: '🎯 Antren' }}
-      />
-      <Tabs.Screen
-        name="quests"
-        options={{ title: 'Görevler', tabBarLabel: '📋 Görevler' }}
-      />
-      <Tabs.Screen
-        name="social"
-        options={{ title: 'Topluluk', tabBarLabel: '🐾 Sosyal' }}
-      />
-      <Tabs.Screen
-        name="leaderboard"
-        options={{ title: 'Liderlik', tabBarLabel: '🏆 Liderlik' }}
-      />
+      <Tabs.Screen name="index" options={{ tabBarLabel: '🏠 Ev' }} />
+      <Tabs.Screen name="schedule" options={{ tabBarLabel: '🤖 Program' }} />
+      <Tabs.Screen name="training" options={{ tabBarLabel: '🎯 Antren' }} />
+      <Tabs.Screen name="walk" options={{ tabBarLabel: '🗺️ Yürüyüş' }} />
+      <Tabs.Screen name="quests" options={{ tabBarLabel: '📋 Görev' }} />
+      <Tabs.Screen name="challenges" options={{ tabBarLabel: '💪 Meydan' }} />
+      <Tabs.Screen name="social" options={{ tabBarLabel: '🐾 Sosyal' }} />
+      <Tabs.Screen name="leaderboard" options={{ tabBarLabel: '🏆 Lider' }} />
+      <Tabs.Screen name="rewards" options={{ tabBarLabel: '⚡️ Ödül' }} />
     </Tabs>
   );
 }

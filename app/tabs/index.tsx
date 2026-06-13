@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import { useAppStore } from '../../src/store/appStore';
 import { Card } from '../../src/components/Card';
 import { ProgressBar } from '../../src/components/ProgressBar';
@@ -20,6 +21,7 @@ const TODAY_TASKS = [
 ];
 
 export default function HomeScreen() {
+  const router = useRouter();
   const { theme, dog, xp, streak } = useAppStore();
   const completed = TODAY_TASKS.filter((t) => t.done).length;
   const progress = completed / TODAY_TASKS.length;
@@ -101,13 +103,14 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Hızlı Başlat</Text>
           <View style={styles.quickRow}>
             {[
-              { label: 'Yürüyüş', emoji: '🏃', color: palette.blue },
-              { label: 'Antrenman', emoji: '🎯', color: palette.mauve },
-              { label: 'Görevler', emoji: '📋', color: palette.success },
+              { label: 'Yürüyüş', emoji: '🗺️', color: palette.success, route: '/tabs/walk' },
+              { label: 'AI Program', emoji: '🤖', color: palette.blue, route: '/tabs/schedule' },
+              { label: 'Ödüller', emoji: '⚡️', color: palette.mauve, route: '/tabs/rewards' },
             ].map((item) => (
               <TouchableOpacity
                 key={item.label}
                 style={[styles.quickCard, { borderColor: item.color + '30', backgroundColor: item.color + '10' }]}
+                onPress={() => router.push(item.route as any)}
                 activeOpacity={0.8}
               >
                 <Text style={{ fontSize: 28 }}>{item.emoji}</Text>
