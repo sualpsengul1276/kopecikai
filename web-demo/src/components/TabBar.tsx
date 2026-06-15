@@ -4,8 +4,8 @@ import type { Screen } from '../store';
 const TABS: { screen: Screen; label: string; emoji: string }[] = [
   { screen: 'home',    label: 'Home',    emoji: '🏠' },
   { screen: 'learn',   label: 'Learn',   emoji: '📖' },
+  { screen: 'care',    label: 'Care',    emoji: '❤️' },
   { screen: 'ask-ai',  label: 'Ask AI',  emoji: '🤖' },
-  { screen: 'stats',   label: 'Stats',   emoji: '📊' },
   { screen: 'profile', label: 'Me',      emoji: '👤' },
 ];
 

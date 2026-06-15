@@ -6,12 +6,12 @@ import OnboardingDetails from './screens/OnboardingDetails';
 import OnboardingComplete from './screens/OnboardingComplete';
 import HomeScreen from './screens/Home';
 import LearnScreen from './screens/Learn';
-import StatsScreen from './screens/Stats';
-import ProfileScreen from './screens/Profile';
+import CareScreen from './screens/Care';
 import AskAIScreen from './screens/AskAI';
+import ProfileScreen from './screens/Profile';
 import TabBar from './components/TabBar';
 
-const TAB_SCREENS = ['home','learn','ask-ai','stats','profile'];
+const TAB_SCREENS = ['home','learn','care','ask-ai','profile'];
 
 export default function App() {
   const { screen } = useStore();
@@ -25,8 +25,8 @@ export default function App() {
       case 'onboarding-complete': return <OnboardingComplete />;
       case 'home':    return <HomeScreen />;
       case 'learn':   return <LearnScreen />;
+      case 'care':    return <CareScreen />;
       case 'ask-ai':  return <AskAIScreen />;
-      case 'stats':   return <StatsScreen />;
       case 'profile': return <ProfileScreen />;
       default:        return <WelcomeScreen />;
     }

@@ -11,7 +11,8 @@ export type Screen =
   | 'learn'
   | 'stats'
   | 'profile'
-  | 'ask-ai';
+  | 'ask-ai'
+  | 'care';
 
 interface State {
   screen: Screen;
